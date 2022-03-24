@@ -14,7 +14,7 @@ export const db = async ({ test = false }) => {
             useFindAndModify: false,
         }
 
-        ;(async () => {
+        ;await (async () => {
             await mongoose.connect(uri, mongooseOpts)
             console.log(
                 '« Connected to In-Memory database. Loading base data... »'

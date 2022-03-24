@@ -1,11 +1,23 @@
 import { PersonsModel } from '../models/persons.model'
 
 export class PersonsService {
-    async getAll() {
-        return await PersonsModel.find()
+    getAll() {
+        return PersonsModel.find()
     }
 
     async create(person: any) {
-        await PersonsModel.create(person)
+        try {
+            await PersonsModel.create(person)
+        } catch (error) {
+            return error.message
+        }
+    }
+
+    async remove(id: string) {
+        try {
+            await PersonsModel.remove({ _id: id });
+        } catch (error) {
+            return error.message
+        }
     }
 }
